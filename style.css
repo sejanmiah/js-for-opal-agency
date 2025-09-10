@@ -1,0 +1,205 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ .app {
+      background: -webkit-linear-gradient(to left, #000000, #000000, #0F2027);
+      background: linear-gradient(to left, #000000, #000000, #000000);
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ✅ Unique UL */
+    .floating-boxes-ul {
+      display: block;
+      width: 100%;
+      height: inherit;
+      list-style-type: none;
+      border-radius: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ✅ Unique LI */
+    .floating-boxes-li:nth-child(1) {
+      position: absolute;
+      left: 10%;
+      height: 30px;
+      width: 30px;
+      background: #ff0050;
+      opacity: 0.1;
+    }
+
+    .floating-boxes-li:nth-child(2) {
+      position: absolute;
+      left: 30%;
+      height: 45px;
+      width: 45px;
+      background: #ff0050;
+            opacity: 0.1;
+    }
+
+    .floating-boxes-li:nth-child(3) {
+      position: absolute;
+      left: 50%;
+      height: 70px;
+      width: 70px;
+      background: #ff0050;
+            opacity: 0.5;
+    }
+
+    .floating-boxes-li:nth-child(4) {
+      position: absolute;
+      left: 80%;
+      height: 20px;
+      width: 20px;
+      background: #ff0050;
+        opacity: 0.8;
+    }
+
+    .floating-boxes-li {
+      animation: floating-boxes-animate 15s linear 1s infinite;
+            border-radius: 50%;
+    }
+
+    /* ✅ Unique keyframes */
+    @keyframes floating-boxes-animate {
+      from {
+        transform: translateY(+1500%) rotate(180deg);
+      }
+      to {
+        transform: translateY(-150%) rotate(360deg);
+      }
+    }
+
+
+
+
+    /* Text carosel */
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: slide 60s linear infinite;
+}
+
+.carousel-text span {
+  padding: 0 2rem;
+  font-size: clamp(16px, 3vw, 32px);
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+
+
+/* for slick slider  */
+
+      .content_slick_slider {
+        margin: auto;
+        padding: 20px;
+        max-width: 1280px;
+      }
+
+      .slider_slick_custom {
+        margin: 30px auto;
+      }
+
+      .image_slider_slick {
+        padding: 10px;
+      }
+
+      .image_slider_slick img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      /* slick arrows */
+      .slick-prev,
+      .slick-next {
+        z-index: 10;
+      }
+
+
+
+/* Tiktok image animate */
+
+.footer-work-together {
+  position: relative; /* ::after ঠিকমতো কাজ করার জন্য */
+}
+
+.footer-work-together::after {
+  content: '';
+  position: absolute;
+  left: -470px;
+  top: 46px;
+  background: url("https://bossliveagency.com/wp-content/uploads/2025/06/tiktok-logo-for-bg.webp") no-repeat center center;
+  background-size: contain;
+  opacity: 0.4;
+  animation: circlmoveerotate 12s infinite linear alternate;
+  height: 300px;
+  width: 300px;
+  z-index: 3;
+}
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .footer-work-together::after {
+    left: -100px; /* সামান্য adjust */
+    top: 30px;
+    height: 250px;
+    width: 250px;
+  }
+}
+
+/* Mobile (up to 767px) */
+@media (max-width: 767px) {
+  .footer-work-together::after {
+    left: -125px; /* position adjust */
+    top: 20px;
+    height: 300px;
+    width: 300px;
+  }
+}
+
+@keyframes circlmoveerotate {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(160px) rotate(360deg);
+  }
+}
+
+.cursor-circle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;  /* circle size */
+  height: 20px;
+  background-color: #ff0050; /* semi-transparent */
+  border-radius: 50%;
+  pointer-events: none; /* click ignore kore */
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out; /* smooth movement */
+  z-index: 9999;
+}
