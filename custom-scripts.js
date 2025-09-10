@@ -1,107 +1,208 @@
-function splitLetters(e) {
-    document.querySelectorAll(e).forEach((e) => {
-        const t = e.innerText.split("");
-        e.innerHTML = t.map((e) => (" " === e ? "&nbsp;" : `<span class="letter inline-block opacity-0">${e}</span>`)).join("");
-    });
-}
-gsap.registerPlugin(ScrollTrigger),
-    splitLetters(".heading-animate"),
-    gsap.utils.toArray(".heading-animate").forEach((e) => {
-        gsap.fromTo(e.querySelectorAll(".letter"), { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.05, scrollTrigger: { trigger: e, start: "top 80%" } });
-    }),
-    gsap.utils.toArray(".subheading-animate").forEach((e) => {
-        gsap.fromTo(e, { opacity: 0 }, { opacity: 1, duration: 1.5, ease: "power1.inOut", yoyo: !0, repeat: -1, repeatDelay: 0.5, scrollTrigger: { trigger: e, start: "top 80%" } });
-    }),
-    gsap.utils.toArray(".border-heading").forEach((e) => {
-        gsap.from(e, { y: 100, opacity: 0, duration: 1.5, ease: "power3.out", scrollTrigger: { trigger: e, start: "top 80%", toggleActions: "play none none reverse" } });
-    }),
-    $(document).ready(function () {
-        var e = $(".slider_slick_custom");
-        e.slick({
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            autoplay: !0,
-            autoplaySpeed: 2e3,
-            speed: 600,
-            arrows: !1,
-            dots: !1,
-            infinite: !0,
-            responsive: [
-                { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-                { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-            ],
+      gsap.registerPlugin(ScrollTrigger);
+
+      function splitLetters(selector) {
+        document.querySelectorAll(selector).forEach((el) => {
+          const letters = el.innerText.split("");
+          el.innerHTML = letters
+            .map((letter) => {
+              if (letter === " ") return "&nbsp;";
+              return `<span class="letter inline-block opacity-0">${letter}</span>`;
+            })
+            .join("");
         });
-        let t = [1, 3, 2, 1],
-            o = 0;
-        setInterval(function () {
-            (o = (o + 1) % t.length), e.slick("slickSetOption", "slidesToScroll", t[o], !0);
-        }, 6e3);
-    });
-const toggleBtn = document.getElementById("menu-toggle"),
-    mobileMenu = document.getElementById("mobile-menu"),
-    hamburger = document.getElementById("hamburger"),
-    closeIcon = document.getElementById("close");
-toggleBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden"), hamburger.classList.toggle("hidden"), closeIcon.classList.toggle("hidden");
-});
-const cursor = document.querySelector(".cursor-circle");
-document.addEventListener("mousemove", (e) => {
-    const t = e.clientX,
-        o = e.clientY;
-    cursor.style.transform = `translate(${t}px, ${o}px)`;
-});
-const header = document.querySelector("header");
-window.addEventListener("scroll", () => {
-    window.scrollY > 50 ? (header.classList.add("bg-black/90", "backdrop-blur-md"), header.classList.remove("bg-transparent")) : (header.classList.add("bg-transparent"), header.classList.remove("bg-black/90", "backdrop-blur-md"));
-}),
-    window.addEventListener("load", () => {
-        let e = gsap.timeline({
-            onComplete: () => {
-                gsap.to("#page-transition", {
-                    opacity: 0,
-                    duration: 0.5,
-                    ease: "power2.out",
-                    onComplete: () => {
-                        document.getElementById("page-transition").remove();
-                    },
-                });
+      }
+
+      // Apply letter splitting
+      splitLetters(".heading-animate");
+
+      // Animate letters
+      gsap.utils.toArray(".heading-animate").forEach((heading) => {
+        gsap.fromTo(
+          heading.querySelectorAll(".letter"),
+          { opacity: 0, x: 50 }, // start from right
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.5,
+            ease: "power3.out",
+            stagger: 0.05, // letters stagger one by one
+            scrollTrigger: {
+              trigger: heading,
+              start: "top 80%",
             },
+          }
+        );
+      });
+
+      gsap.utils.toArray(".subheading-animate").forEach((heading) => {
+        gsap.fromTo(
+          heading,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 1.5,
+            ease: "power1.inOut",
+            yoyo: true, // fade in then fade out
+            repeat: -1, // infinite loop
+            repeatDelay: 0.5, // small delay between fades
+            scrollTrigger: {
+              trigger: heading,
+              start: "top 80%",
+            },
+          }
+        );
+      });
+
+
+      // Border heading animation
+gsap.utils.toArray(".border-heading").forEach((heading) => {
+  gsap.from(heading, {
+    y: 100,         // নিচ থেকে আসবে
+    opacity: 0,     // ফেড ইন হবে
+    duration: 1.5,  // সময়
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: heading,
+      start: "top 80%",      // যখন element viewport এর 80% এ আসবে
+      toggleActions: "play none none reverse", 
+    },
+  });
+});
+
+
+
+      // For Slick Slider
+      $(document).ready(function () {
+        var $slider = $(".slider_slick_custom");
+
+        $slider.slick({
+          slidesToShow: 5, // desktop
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          speed: 600,
+          arrows: false, // arrows removed
+          dots: false,
+          infinite: true,
+          responsive: [
+            {
+              breakpoint: 1024, // Tablet
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 768, // Mobile
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+              },
+            },
+          ],
         });
-        e.to(".frist-div", { y: "100%", duration: 0.8, ease: "power3.inOut" }),
-            e.to(".frist-div, .second-div, .third-div, .forth-div", { y: "100%", duration: 1, ease: "power4.inOut", stagger: 0.15 }),
-            e
-                .to(".frist-div, .second-div, .third-div, .forth-div", { y: "115%", duration: 1.2, ease: "back.in(3)", stagger: 0.25 })
-                .to("#page-transition", { backgroundColor: "transparent", duration: 0.5, ease: "power2.out" }, "-=0.8")
-                .to(".second-div", { y: "100%", duration: 0.8, ease: "power3.inOut" }, "-=0.6")
-                .to(".third-div", { y: "100%", duration: 0.8, ease: "power3.inOut" }, "-=0.6")
-                .to(".forth-div", { y: "100%", duration: 0.8, ease: "power3.inOut" }, "-=0.6");
+
+        // custom loop for changing scroll counts
+        let scrollModes = [1, 3, 2, 1];
+        let index = 0;
+
+        setInterval(function () {
+          index = (index + 1) % scrollModes.length;
+          $slider.slick(
+            "slickSetOption",
+            "slidesToScroll",
+            scrollModes[index],
+            true
+          );
+        }, 6000);
+      });
+
+
+      // Menu Toggle 
+  const toggleBtn = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const hamburger = document.getElementById("hamburger");
+  const closeIcon = document.getElementById("close");
+
+  toggleBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+    hamburger.classList.toggle("hidden");
+    closeIcon.classList.toggle("hidden");
+  });
+
+
+
+  const cursor = document.querySelector('.cursor-circle');
+
+document.addEventListener('mousemove', e => {
+  const x = e.clientX;
+  const y = e.clientY;
+  cursor.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+// For Header
+  const header = document.querySelector("header");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      header.classList.add("bg-black/90", "backdrop-blur-md"); // Black + blur effect
+      header.classList.remove("bg-transparent");
+    } else {
+      header.classList.add("bg-transparent");
+      header.classList.remove("bg-black/90", "backdrop-blur-md");
+    }
+  });
+
+// Page Transition
+window.addEventListener("load", () => {
+    let tl = gsap.timeline({
+      onComplete: () => {
+        gsap.to("#page-transition", {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          onComplete: () => {
+            document.getElementById("page-transition").remove();
+          }
+        });
+      }
     });
 
-
-
-          const track = document.querySelector(".slider-track");
-  const slides = document.querySelectorAll(".slide");
-
-  let index = 0;
-  let scrollModes = [1, 3, 2, 1]; // scroll counts
-  let modeIndex = 0;
-  let slideCount = slides.length;
-
-  function getVisibleSlides() {
-    if (window.innerWidth <= 768) return 2; // mobile
-    if (window.innerWidth <= 1024) return 3; // tablet
-    return 5; // desktop
-  }
-
-  function moveSlides() {
-    let scrollBy = scrollModes[modeIndex];
-    modeIndex = (modeIndex + 1) % scrollModes.length;
-
-    index += scrollBy;
-    if (index >= slideCount) {
-      index = 0; // reset
-    }
-
-    let slideWidth = slides[0].offsetWidth;
-    track.style.transform = `translateX(-${index * slideWidth}px)`;
-  }
+    tl.to(".frist-div", {
+      y: "100%",  // পুরোপুরি নিচে নামবে
+      duration: 0.8,
+      ease: "power3.inOut"
+    })
+tl.to(".frist-div, .second-div, .third-div, .forth-div", {
+  y: "100%",
+  duration: 1,
+  ease: "power4.inOut",
+  stagger: 0.15
+})
+tl.to(".frist-div, .second-div, .third-div, .forth-div", {
+  y: "115%",   // একটু বেশি নামবে
+  duration: 1.2,
+  ease: "back.in(3)", // 3 মানে বেশি bounce
+  stagger: 0.25
+})
+.to("#page-transition", {
+  backgroundColor: "transparent", 
+  duration: 0.5, 
+  ease: "power2.out"
+}, "-=0.8")
+    .to(".second-div", {
+      y: "100%",
+      duration: 0.8,
+      ease: "power3.inOut"
+    }, "-=0.6") // overlap effect, train এর মতো
+    .to(".third-div", {
+      y: "100%",
+      duration: 0.8,
+      ease: "power3.inOut"
+    }, "-=0.6")
+    .to(".forth-div", {
+      y: "100%",
+      duration: 0.8,
+      ease: "power3.inOut"
+    }, "-=0.6");
+  });
