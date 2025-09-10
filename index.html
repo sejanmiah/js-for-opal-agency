@@ -545,51 +545,80 @@ gsap.utils.toArray(".border-heading").forEach((heading) => {
 
 
 
-      // For Slick Slider
-      $(document).ready(function () {
-        var $slider = $(".slider_slick_custom");
+      // // For Slick Slider
+      // $(document).ready(function () {
+      //   var $slider = $(".slider_slick_custom");
 
-        $slider.slick({
-          slidesToShow: 5, // desktop
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 2000,
-          speed: 600,
-          arrows: false, // arrows removed
-          dots: false,
-          infinite: true,
-          responsive: [
-            {
-              breakpoint: 1024, // Tablet
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 1,
-              },
-            },
-            {
-              breakpoint: 768, // Mobile
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-              },
-            },
-          ],
-        });
+      //   $slider.slick({
+      //     slidesToShow: 5, // desktop
+      //     slidesToScroll: 1,
+      //     autoplay: true,
+      //     autoplaySpeed: 2000,
+      //     speed: 600,
+      //     arrows: false, // arrows removed
+      //     dots: false,
+      //     infinite: true,
+      //     responsive: [
+      //       {
+      //         breakpoint: 1024, // Tablet
+      //         settings: {
+      //           slidesToShow: 3,
+      //           slidesToScroll: 1,
+      //         },
+      //       },
+      //       {
+      //         breakpoint: 768, // Mobile
+      //         settings: {
+      //           slidesToShow: 2,
+      //           slidesToScroll: 1,
+      //         },
+      //       },
+      //     ],
+      //   });
 
-        // custom loop for changing scroll counts
-        let scrollModes = [1, 3, 2, 1];
-        let index = 0;
+      //   // custom loop for changing scroll counts
+      //   let scrollModes = [1, 3, 2, 1];
+      //   let index = 0;
 
-        setInterval(function () {
-          index = (index + 1) % scrollModes.length;
-          $slider.slick(
-            "slickSetOption",
-            "slidesToScroll",
-            scrollModes[index],
-            true
-          );
-        }, 6000);
-      });
+      //   setInterval(function () {
+      //     index = (index + 1) % scrollModes.length;
+      //     $slider.slick(
+      //       "slickSetOption",
+      //       "slidesToScroll",
+      //       scrollModes[index],
+      //       true
+      //     );
+      //   }, 6000);
+      // });
+
+      const track = document.querySelector(".slider-track");
+  const slides = document.querySelectorAll(".slide");
+
+  let index = 0;
+  let scrollModes = [1, 3, 2, 1]; // scroll counts
+  let modeIndex = 0;
+  let slideCount = slides.length;
+
+  function getVisibleSlides() {
+    if (window.innerWidth <= 768) return 2; // mobile
+    if (window.innerWidth <= 1024) return 3; // tablet
+    return 5; // desktop
+  }
+
+  function moveSlides() {
+    let scrollBy = scrollModes[modeIndex];
+    modeIndex = (modeIndex + 1) % scrollModes.length;
+
+    index += scrollBy;
+    if (index >= slideCount) {
+      index = 0; // reset
+    }
+
+    let slideWidth = slides[0].offsetWidth;
+    track.style.transform = `translateX(-${index * slideWidth}px)`;
+  }
+
+  setInterval(moveSlides, 2000); // autoplay speed
 
 
       // Menu Toggle 

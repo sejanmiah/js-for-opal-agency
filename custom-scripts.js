@@ -1,1 +1,107 @@
-function splitLetters(e){document.querySelectorAll(e).forEach((e=>{const t=e.innerText.split("");e.innerHTML=t.map((e=>" "===e?"&nbsp;":`<span class="letter inline-block opacity-0">${e}</span>`)).join("")}))}gsap.registerPlugin(ScrollTrigger),splitLetters(".heading-animate"),gsap.utils.toArray(".heading-animate").forEach((e=>{gsap.fromTo(e.querySelectorAll(".letter"),{opacity:0,x:50},{opacity:1,x:0,duration:.5,ease:"power3.out",stagger:.05,scrollTrigger:{trigger:e,start:"top 80%"}})})),gsap.utils.toArray(".subheading-animate").forEach((e=>{gsap.fromTo(e,{opacity:0},{opacity:1,duration:1.5,ease:"power1.inOut",yoyo:!0,repeat:-1,repeatDelay:.5,scrollTrigger:{trigger:e,start:"top 80%"}})})),gsap.utils.toArray(".border-heading").forEach((e=>{gsap.from(e,{y:100,opacity:0,duration:1.5,ease:"power3.out",scrollTrigger:{trigger:e,start:"top 80%",toggleActions:"play none none reverse"}})})),$(document).ready((function(){var e=$(".slider_slick_custom");e.slick({slidesToShow:5,slidesToScroll:1,autoplay:!0,autoplaySpeed:2e3,speed:600,arrows:!1,dots:!1,infinite:!0,responsive:[{breakpoint:1024,settings:{slidesToShow:3,slidesToScroll:1}},{breakpoint:768,settings:{slidesToShow:2,slidesToScroll:1}}]});let t=[1,3,2,1],o=0;setInterval((function(){o=(o+1)%t.length,e.slick("slickSetOption","slidesToScroll",t[o],!0)}),6e3)}));const toggleBtn=document.getElementById("menu-toggle"),mobileMenu=document.getElementById("mobile-menu"),hamburger=document.getElementById("hamburger"),closeIcon=document.getElementById("close");toggleBtn.addEventListener("click",(()=>{mobileMenu.classList.toggle("hidden"),hamburger.classList.toggle("hidden"),closeIcon.classList.toggle("hidden")}));const cursor=document.querySelector(".cursor-circle");document.addEventListener("mousemove",(e=>{const t=e.clientX,o=e.clientY;cursor.style.transform=`translate(${t}px, ${o}px)`}));const header=document.querySelector("header");window.addEventListener("scroll",(()=>{window.scrollY>50?(header.classList.add("bg-black/90","backdrop-blur-md"),header.classList.remove("bg-transparent")):(header.classList.add("bg-transparent"),header.classList.remove("bg-black/90","backdrop-blur-md"))})),window.addEventListener("load",(()=>{let e=gsap.timeline({onComplete:()=>{gsap.to("#page-transition",{opacity:0,duration:.5,ease:"power2.out",onComplete:()=>{document.getElementById("page-transition").remove()}})}});e.to(".frist-div",{y:"100%",duration:.8,ease:"power3.inOut"}),e.to(".frist-div, .second-div, .third-div, .forth-div",{y:"100%",duration:1,ease:"power4.inOut",stagger:.15}),e.to(".frist-div, .second-div, .third-div, .forth-div",{y:"115%",duration:1.2,ease:"back.in(3)",stagger:.25}).to("#page-transition",{backgroundColor:"transparent",duration:.5,ease:"power2.out"},"-=0.8").to(".second-div",{y:"100%",duration:.8,ease:"power3.inOut"},"-=0.6").to(".third-div",{y:"100%",duration:.8,ease:"power3.inOut"},"-=0.6").to(".forth-div",{y:"100%",duration:.8,ease:"power3.inOut"},"-=0.6")}));
+function splitLetters(e) {
+    document.querySelectorAll(e).forEach((e) => {
+        const t = e.innerText.split("");
+        e.innerHTML = t.map((e) => (" " === e ? "&nbsp;" : `<span class="letter inline-block opacity-0">${e}</span>`)).join("");
+    });
+}
+gsap.registerPlugin(ScrollTrigger),
+    splitLetters(".heading-animate"),
+    gsap.utils.toArray(".heading-animate").forEach((e) => {
+        gsap.fromTo(e.querySelectorAll(".letter"), { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.05, scrollTrigger: { trigger: e, start: "top 80%" } });
+    }),
+    gsap.utils.toArray(".subheading-animate").forEach((e) => {
+        gsap.fromTo(e, { opacity: 0 }, { opacity: 1, duration: 1.5, ease: "power1.inOut", yoyo: !0, repeat: -1, repeatDelay: 0.5, scrollTrigger: { trigger: e, start: "top 80%" } });
+    }),
+    gsap.utils.toArray(".border-heading").forEach((e) => {
+        gsap.from(e, { y: 100, opacity: 0, duration: 1.5, ease: "power3.out", scrollTrigger: { trigger: e, start: "top 80%", toggleActions: "play none none reverse" } });
+    }),
+    $(document).ready(function () {
+        var e = $(".slider_slick_custom");
+        e.slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: !0,
+            autoplaySpeed: 2e3,
+            speed: 600,
+            arrows: !1,
+            dots: !1,
+            infinite: !0,
+            responsive: [
+                { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 1 } },
+                { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+            ],
+        });
+        let t = [1, 3, 2, 1],
+            o = 0;
+        setInterval(function () {
+            (o = (o + 1) % t.length), e.slick("slickSetOption", "slidesToScroll", t[o], !0);
+        }, 6e3);
+    });
+const toggleBtn = document.getElementById("menu-toggle"),
+    mobileMenu = document.getElementById("mobile-menu"),
+    hamburger = document.getElementById("hamburger"),
+    closeIcon = document.getElementById("close");
+toggleBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden"), hamburger.classList.toggle("hidden"), closeIcon.classList.toggle("hidden");
+});
+const cursor = document.querySelector(".cursor-circle");
+document.addEventListener("mousemove", (e) => {
+    const t = e.clientX,
+        o = e.clientY;
+    cursor.style.transform = `translate(${t}px, ${o}px)`;
+});
+const header = document.querySelector("header");
+window.addEventListener("scroll", () => {
+    window.scrollY > 50 ? (header.classList.add("bg-black/90", "backdrop-blur-md"), header.classList.remove("bg-transparent")) : (header.classList.add("bg-transparent"), header.classList.remove("bg-black/90", "backdrop-blur-md"));
+}),
+    window.addEventListener("load", () => {
+        let e = gsap.timeline({
+            onComplete: () => {
+                gsap.to("#page-transition", {
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: "power2.out",
+                    onComplete: () => {
+                        document.getElementById("page-transition").remove();
+                    },
+                });
+            },
+        });
+        e.to(".frist-div", { y: "100%", duration: 0.8, ease: "power3.inOut" }),
+            e.to(".frist-div, .second-div, .third-div, .forth-div", { y: "100%", duration: 1, ease: "power4.inOut", stagger: 0.15 }),
+            e
+                .to(".frist-div, .second-div, .third-div, .forth-div", { y: "115%", duration: 1.2, ease: "back.in(3)", stagger: 0.25 })
+                .to("#page-transition", { backgroundColor: "transparent", duration: 0.5, ease: "power2.out" }, "-=0.8")
+                .to(".second-div", { y: "100%", duration: 0.8, ease: "power3.inOut" }, "-=0.6")
+                .to(".third-div", { y: "100%", duration: 0.8, ease: "power3.inOut" }, "-=0.6")
+                .to(".forth-div", { y: "100%", duration: 0.8, ease: "power3.inOut" }, "-=0.6");
+    });
+
+
+
+          const track = document.querySelector(".slider-track");
+  const slides = document.querySelectorAll(".slide");
+
+  let index = 0;
+  let scrollModes = [1, 3, 2, 1]; // scroll counts
+  let modeIndex = 0;
+  let slideCount = slides.length;
+
+  function getVisibleSlides() {
+    if (window.innerWidth <= 768) return 2; // mobile
+    if (window.innerWidth <= 1024) return 3; // tablet
+    return 5; // desktop
+  }
+
+  function moveSlides() {
+    let scrollBy = scrollModes[modeIndex];
+    modeIndex = (modeIndex + 1) % scrollModes.length;
+
+    index += scrollBy;
+    if (index >= slideCount) {
+      index = 0; // reset
+    }
+
+    let slideWidth = slides[0].offsetWidth;
+    track.style.transform = `translateX(-${index * slideWidth}px)`;
+  }
