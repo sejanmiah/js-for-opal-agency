@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+                    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    /> -->
+
+    <!-- ✅ TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!-- ✅ FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- ✅ GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    
+<div id="page-transition"  class="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
+  <!-- তোমার SVG -->
+<svg id="logo-elements" class="max-w-[400px] w-3/4 h-auto ml-[220px]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" x="0px" y="0px" viewBox="0 0 1378.06 777.77" style="enable-background:new 0 0 1378.06 777.77;" xml:space="preserve"><style type="text/css">	.st0{fill:url(#SVGID_1_);}	.st1{fill:url(#SVGID_2_);}	.st2{fill:url(#SVGID_3_);}	.st3{fill:url(#SVGID_4_);}	.st4{fill:url(#SVGID_5_);}	.st5{opacity:0.2;fill:url(#XMLID_2_);}	.st6{opacity:0.2;fill:url(#XMLID_3_);}	.st7{fill:url(#SVGID_6_);}	.st8{fill:#F6D26D;}	.st9{stroke:#000000;stroke-miterlimit:10;}</style><g>			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="2395.3369" y1="10.9436" x2="2962.2205" y2="671.0646" gradientTransform="matrix(-1 0 0 1 2801.4216 0)">		<stop offset="0" style="stop-color:#F5DE80"></stop>		<stop offset="0.3393" style="stop-color:#B7861A"></stop>	</linearGradient>	<path class="st0" d="M163.6,393.33C91.2,367.15,42.08,298.32,42.08,219.87c0-101.75,82.78-184.53,184.53-184.53  s184.53,82.78,184.53,184.53c0,78.76-49.01,147.33-121.47,173.46h58.71c16.38-11.49,31.19-25.28,43.81-41.04  c29.94-37.39,46.44-84.42,46.44-132.42c0-116.91-95.11-212.02-212.02-212.02S14.6,102.96,14.6,219.87  c0,70.74,34.78,134.67,89.95,173.46H163.6z"></path>			<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="2349.1299" y1="103.3878" x2="2853.9026" y2="691.1824" gradientTransform="matrix(-1 0 0 1 2801.4216 0)">		<stop offset="0" style="stop-color:#F5DE80"></stop>		<stop offset="0.3393" style="stop-color:#B7861A"></stop>	</linearGradient>	<path class="st1" d="M224.95,341.71c-7.52,0.22-13.32,6.79-13.32,14.31l0,23.57c0,7.59,6.15,13.74,13.74,13.74h0  c7.59,0,13.74-6.15,13.74-13.74v-24.15C239.11,347.71,232.73,341.47,224.95,341.71z"></path>	<g>		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="13.911" y1="220.4174" x2="437.1692" y2="220.4174">			<stop offset="0" style="stop-color:#F5DE80"></stop>			<stop offset="0.3393" style="stop-color:#B7861A"></stop>		</linearGradient>		<path class="st2" d="M225.54,432.05c-116.69,0-211.63-94.94-211.63-211.63S108.85,8.79,225.54,8.79s211.63,94.94,211.63,211.63   S342.23,432.05,225.54,432.05z M225.54,36.27C124,36.27,41.4,118.88,41.4,220.42S124,404.56,225.54,404.56   s184.14-82.61,184.14-184.14S327.08,36.27,225.54,36.27z"></path>	</g>	<g id="XMLID_33_">					<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="2436.5588" y1="307.0096" x2="2715.5405" y2="307.0096" gradientTransform="matrix(-1 0 0 1 2801.4216 0)">			<stop offset="0" style="stop-color:#F5DE80"></stop>			<stop offset="0.3393" style="stop-color:#B7861A"></stop>		</linearGradient>		<path class="st3" d="M225.37,369.18c56.33,0,102.97-42.34,109.75-96.86h15.99c7.59,0,13.74-6.15,13.74-13.74   c0-7.59-6.15-13.74-13.74-13.74h-28.89c-7.59,0-13.74,6.15-13.74,13.74c0,45.83-37.29,83.12-83.12,83.12s-83.12-37.29-83.12-83.12   c0-7.59-6.15-13.74-13.74-13.74H99.62c-7.59,0-13.74,6.15-13.74,13.74c0,7.59,6.15,13.74,13.74,13.74h15.99   C122.4,326.85,169.04,369.18,225.37,369.18z"></path>	</g>	<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="253.9135" y1="63.7908" x2="101.8378" y2="799.3405">		<stop offset="0" style="stop-color:#F5DE80"></stop>		<stop offset="0.3393" style="stop-color:#B7861A"></stop>	</linearGradient>	<path class="st4" d="M256.14,266.82c-4.55,0-8.25-3.69-8.25-8.25c0-4.55,3.69-8.25,8.25-8.25h34.95V229h-34.95  c-4.55,0-8.25-3.69-8.25-8.25s3.69-8.25,8.25-8.25h34.95v-21.33h-34.95c-4.55,0-8.25-3.69-8.25-8.25c0-4.55,3.69-8.25,8.25-8.25  h34.95v-21.33h-34.95c-4.55,0-8.25-3.69-8.25-8.25c0-4.55,3.69-8.25,8.25-8.25h34.41c-4.07-32.35-31.74-57.47-65.18-57.47  c-33.44,0-61.11,25.11-65.18,57.47h34.41c4.55,0,8.25,3.69,8.25,8.25c0,4.55-3.69,8.25-8.25,8.25h-34.95v21.33h34.95  c4.55,0,8.25,3.69,8.25,8.25c0,4.55-3.69,8.25-8.25,8.25h-34.95v21.33h34.95c4.55,0,8.25,3.69,8.25,8.25s-3.69,8.25-8.25,8.25  h-34.95v21.33h34.95c4.55,0,8.25,3.69,8.25,8.25c0,4.55-3.69,8.25-8.25,8.25h-34.41c4.07,32.35,31.74,57.47,65.18,57.47  s61.11-25.11,65.18-57.47H256.14z"></path>			<linearGradient id="XMLID_2_" gradientUnits="userSpaceOnUse" x1="2659.4932" y1="-15904.9805" x2="2492.6077" y2="-15904.9805" gradientTransform="matrix(-1 0 0 -1 2801.4216 -15602.6543)">		<stop offset="0" style="stop-color:#FFFFFF"></stop>		<stop offset="1" style="stop-color:#000000"></stop>	</linearGradient>	<path id="XMLID_10_" class="st5" d="M225.37,349.01c-46.01,0-83.44-37.43-83.44-83.44v-9.93c0.21,0.95,0.32,1.93,0.32,2.94  c0,45.83,37.29,83.12,83.12,83.12s83.12-37.29,83.12-83.12c0-1.01,0.12-1.99,0.32-2.94v9.93  C308.81,311.58,271.38,349.01,225.37,349.01z"></path>			<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="2534.3704" y1="-15828.8857" x2="2617.7305" y2="-15912.2461" gradientTransform="matrix(-1 0 0 -1 2801.4216 -15602.6543)">		<stop offset="0" style="stop-color:#FFFFFF"></stop>		<stop offset="1" style="stop-color:#000000"></stop>	</linearGradient>	<path id="XMLID_9_" class="st6" d="M225.37,324.05c-36.3,0-65.83-29.53-65.83-65.83v-7.83c0.16,0.75,0.25,1.52,0.25,2.32  c0,36.16,29.42,65.58,65.58,65.58s65.58-29.42,65.58-65.58c0-0.8,0.09-1.57,0.25-2.32v7.83  C291.2,294.52,261.67,324.05,225.37,324.05z"></path>	<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="463.4661" y1="25.0564" x2="1528.2195" y2="584.5665">		<stop offset="0" style="stop-color:#F5DE80"></stop>		<stop offset="0.3393" style="stop-color:#B7861A"></stop>
+</div>
+
+
+
+
+
+
+          <!-- Header -->
+<header class="fixed top-0 left-0 w-full z-50 bg-transparent">
+  <nav class="max-w-[1240px] mx-auto px-4 flex items-center justify-between py-4">
+    <!-- Logo -->
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-white">
+      Opal
+    </h1>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden lg:flex gap-6 text-white font-medium items-center">
+      <li><a href="https://app.catcrm.com/v2/preview/Xm7bVKNVTI6WAcR4N98I?notrack=true" class="hover:text-[#ff0050]">Home</a></li>
+      <li><a href="https://app.catcrm.com/v2/preview/CxWGYysEZA8SI4bRqlai?notrack=true" class="hover:text-[#ff0050]">Our Clients</a></li>
+
+      <!-- Submenu -->
+      <li class="relative group">
+        <button class="hover:text-[#ff0050] flex items-center gap-1">
+          Our Services
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
+        </button>
+        <ul
+          class="absolute left-0 mt-2 w-56 bg-black text-white p-2 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300">
+          <li><a href="https://app.catcrm.com/v2/preview/CrCLxG2RfkHUuLr9QNE9?notrack=true" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Ads Services</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Live Content Creators</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">Fulfillment by Boss Ads Agency</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Ads Account</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">Buy TikTok Followers</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#" class="hover:text-[#ff0050]">About Us</a></li>
+    </ul>
+
+    <!-- Right Section -->
+    <div class="hidden lg:flex items-center gap-4">
+      <div class="flex gap-3 text-lg">
+        <i class="fa-brands fa-facebook-f text-[#ff0050] hover:text-white cursor-pointer"></i>
+        <i class="fa-brands fa-instagram text-[#ff0050] hover:text-white cursor-pointer"></i>
+        <i class="fa-brands fa-tiktok text-[#ff0050] hover:text-white cursor-pointer"></i>
+      </div>
+      <button class="py-[6px] px-6 bg-[#ff0050] text-white font-semibold rounded-md">
+        Contact Us
+      </button>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-toggle" class="lg:hidden text-white text-2xl focus:outline-none">
+      <!-- Hamburger -->
+      <span id="hamburger">☰</span>
+      <!-- Close Icon -->
+      <span id="close" class="hidden">✖</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden bg-black text-white px-6 py-4 space-y-3 hidden">
+    <a href="https://app.catcrm.com/v2/preview/Xm7bVKNVTI6WAcR4N98I?notrack=true" class="block hover:text-[#ff0050]">Home</a>
+    <a href="https://app.catcrm.com/v2/preview/CxWGYysEZA8SI4bRqlai?notrack=true" class="block hover:text-[#ff0050]">Our Clients</a>
+
+    <!-- Mobile Dropdown -->
+    <details class="group">
+      <summary class="cursor-pointer hover:text-[#ff0050]">Our Services</summary>
+      <ul class="pl-4 mt-2 space-y-2">
+        <li><a href="https://app.catcrm.com/v2/preview/CrCLxG2RfkHUuLr9QNE9?notrack=true" class="block hover:text-[#ff0050]">TikTok Ads Services</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">TikTok Live Content Creators</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">Fulfillment by Boss Ads Agency</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">TikTok Ads Account</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">Buy TikTok Followers</a></li>
+      </ul>
+    </details>
+
+    <a href="#" class="block hover:text-[#ff0050]">About Us</a>
+
+    <div class="flex gap-3 text-lg mt-4">
+      <i class="fa-brands fa-facebook-f text-[#ff0050] hover:text-white cursor-pointer"></i>
+      <i class="fa-brands fa-instagram text-[#ff0050] hover:text-white cursor-pointer"></i>
+      <i class="fa-brands fa-tiktok text-[#ff0050] hover:text-white cursor-pointer"></i>
+    </div>
+    <button class="w-full py-[6px] mt-4 bg-[#ff0050] text-white font-semibold rounded-md">
+      Contact Us
+    </button>
+  </div>
+</header>
+
+<div class="cursor-circle"></div>
+  
+
+<!-- About Opal Agency -->
+<section class="bg-black text-white py-20 lg:pt-40 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
+
+      <div class="lg:col-span-3 space-y-12">
+        <div>
+          <h2 class="text-2xl font-bold mb-4">ABOUT <span class="text-[#ff0050] heading-animate">OPAL AGENCY</span></h2>
+          <p class="text-gray-300">
+            Opal is a forward-thinking global agency led by passionate innovators. We believe in continuous growth and operate across some of the fastest-expanding industries worldwide. With a strong presence in the UK, Europe, USA, UAE, and Pakistan, we combine international expertise with local insights to deliver unmatched value and tailored solutions for our clients.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold heading-animate text-[#ff0050] border-b border-[#ff0050] inline-block pb-1 mb-6">Our Core Expertise:</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="text-lg font-bold mb-2">Innovative Technology Solutions</h4>
+              <p class="text-gray-400 text-sm">We lead the digital frontier with custom-built software and IT solutions designed to streamline business operations. Our mission is to empower companies worldwide with the tools they need to scale and succeed effortlessly.</p>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold mb-2">Global Supply & Manufacturing</h4>
+              <p class="text-gray-400 text-sm">From design to production, we rely on a trusted global network that ensures speed, quality, and sustainability at every stage of our manufacturing process.</p>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold mb-2">Omnichannel Commerce</h4>
+              <p class="text-gray-400 text-sm">We simplify shopping journeys for both businesses and consumers, making it seamless to access our diverse products through powerful e-commerce platforms.</p>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold mb-2">Strategic Property Ventures</h4>
+              <p class="text-gray-400 text-sm">We specialize in unlocking the hidden potential of real estate projects, transforming properties into high-value assets that deliver sustainable growth across global markets.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold heading-animate heading-animate text-[#ff0050] border-b border-[#ff0050] inline-block pb-1 mb-6">Our Global Advantage:</h3>
+          <p class="text-gray-300">
+            With our footprint across multiple regions, we understand diverse markets and cultures. This enables us to build strong international connections, adapt quickly to change, and guide clients with strategies that work on a global scale.
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2 space-y-8">
+        <img src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68c91e189c9a6d1f1da920ec.jpeg" alt="Opal Agency CEO" class="rounded-xl w-full object-cover">
+        <div>
+          <h4 class="text-lg font-bold mb-2">Our Vision</h4>
+          <p class="text-gray-400 text-sm">At Opal, our vision is to foster innovation, integrity, and long-term growth. We aim to create businesses that inspire trust, deliver top-quality products and services, and positively impact communities around the globe.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold mb-4">Stay Connected</h4>
+          <div class="flex items-center space-x-4">
+            <a href="#" class="text-gray-400 hover:text-[#ff0050]"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-[#ff0050]"><i class="fa-brands fa-facebook-f fa-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-[#ff0050]"><i class="fa-brands fa-instagram fa-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-[#ff0050]"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-[#ff0050]"><i class="fa-brands fa-youtube fa-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-[#ff0050]"><i class="fa-brands fa-pinterest-p fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-20 bg-[#111111] border border-gray-800 rounded-xl p-8 text-center lg:text-left">
+      <p class="text-lg text-center text-gray-300">
+        <a href="#">
+            <span class="font-bold heading-animate text-[#ff0050]">Partner with Opal</span> and harness our global presence, diverse skillset, and entrepreneurial mindset to power your next success story. 
+            <span class="inline-flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full ml-2">
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </span>
+        </a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Form Section -->
+ <section class="bg-black">
+<div style="height: 410px;">
+        <iframe
+            src="https://link.catcrm.com/widget/form/pBnIYZW8TqJyWkHYKEBq"
+            style="width:100%;height:100%;border:none;border-radius:0px"
+            id="inline-pBnIYZW8TqJyWkHYKEBq" 
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="opal"
+            data-height="410"
+            data-layout-iframe-id="inline-pBnIYZW8TqJyWkHYKEBq"
+            data-form-id="pBnIYZW8TqJyWkHYKEBq"
+            title="opal"
+        >
+        </iframe>
+        <script src="https://link.catcrm.com/js/form_embed.js"></script> 
+        </div>
+
+ </section>
+
+
+<!-- Bottom Top Section -->
+<section class="main-video-section relative w-full h-[682px] overflow-hidden">
+  <!-- Background Video -->
+  <video autoplay muted loop class="absolute w-full h-full object-cover">
+    <source src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68beaec88c60737599f9d419.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Black Overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <!-- Gradient Shadow Top -->
+  <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-10"></div>
+
+  <!-- Content -->
+  <div class="relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
+    <h1 class="text-white font-bold text-5xl md:text-6xl lg:text-[180px] leading-tight">
+      LET'S WORK <br> TOGETHER
+    </h1>
+
+    <!-- Contact Button -->
+    <div class="hover-icon-div absolute group flex flex-col mt-8 rounded-full bg-[#ff0050] hover:bg-black cursor-pointer text-white font-bold px-[10px] py-[35px] text-lg md:text-xl transition-all duration-300">
+      <i class="fa-solid fa-arrow-right text-white -rotate-45 group-hover:rotate-0 transition-transform duration-500"></i>
+      <a href="#" class="">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+ <footer class="bg-black text-white">
+  <!-- Top Section -->
+  <div class="flex flex-col items-center text-center py-8 px-4">
+    
+    <!-- WhatsApp CTA -->
+    <div class="flex items-center gap-2 mb-4">
+      <a href="https://wa.me/971551745764" target="_blank" class="flex items-center gap-2 mb-4">
+  <i class="fa-brands fa-whatsapp text-[#ff0050] text-2xl"></i>
+  <span class="font-semibold text-lg">Join WhatsApp Channel for Support</span>
+</a>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="flex gap-6 text-[#ff0050] text-xl mb-6">
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-google"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-pinterest-p"></i></a>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="flex flex-wrap justify-center gap-6 text-sm mb-6">
+      <a href="#" class="hover:text-[#ff0050] transition">FAQs</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Privacy Policy</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Our Regions</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Join Our Team</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Terms & Conditions</a>
+    </div>
+
+    <!-- Copyright -->
+    <p class="text-xs text-gray-400">
+      Copyright © 2025 All Rights Reserved by Opal Sky Media | Design & Develop by <a class="text-[#ff0050] font-semibold" href="https://netxsites.com/">Netxsites</a>
+    </p>
+  </div>
+</footer>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- ✅ Slick JS -->
+ <script src="https://link.catcrm.com/js/form_embed.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/sejanmiah/js-for-opal-agency/custom-scripts.js"></script>
+</body>
+</html>

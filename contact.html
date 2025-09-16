@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    /* Text carosel */
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: slide 60s linear infinite;
+}
+
+.carousel-text span {
+  padding: 0 2rem;
+  font-size: clamp(16px, 3vw, 32px);
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+    </style>
+                        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    /> -->
+
+    <!-- ✅ TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!-- ✅ FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- ✅ GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+              <!-- Header -->
+<header class="fixed top-0 left-0 w-full z-50 bg-transparent">
+  <nav class="max-w-[1240px] mx-auto px-4 flex items-center justify-between py-4">
+    <!-- Logo -->
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-white">
+      Opal
+    </h1>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden lg:flex gap-6 text-white font-medium items-center">
+      <li><a href="https://app.catcrm.com/v2/preview/Xm7bVKNVTI6WAcR4N98I?notrack=true" class="hover:text-[#ff0050]">Home</a></li>
+      <li><a href="https://app.catcrm.com/v2/preview/CxWGYysEZA8SI4bRqlai?notrack=true" class="hover:text-[#ff0050]">Our Clients</a></li>
+
+      <!-- Submenu -->
+      <li class="relative group">
+        <button class="hover:text-[#ff0050] flex items-center gap-1">
+          Our Services
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
+        </button>
+        <ul
+          class="absolute left-0 mt-2 w-56 bg-black text-white p-2 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300">
+          <li><a href="https://app.catcrm.com/v2/preview/CrCLxG2RfkHUuLr9QNE9?notrack=true" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Ads Services</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Live Content Creators</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">Fulfillment by Boss Ads Agency</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Ads Account</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">Buy TikTok Followers</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#" class="hover:text-[#ff0050]">About Us</a></li>
+    </ul>
+
+    <!-- Right Section -->
+    <div class="hidden lg:flex items-center gap-4">
+      <div class="flex gap-3 text-lg">
+        <i class="fa-brands fa-facebook-f text-[#ff0050] hover:text-white cursor-pointer"></i>
+        <i class="fa-brands fa-instagram text-[#ff0050] hover:text-white cursor-pointer"></i>
+        <i class="fa-brands fa-tiktok text-[#ff0050] hover:text-white cursor-pointer"></i>
+      </div>
+      <button class="py-[6px] px-6 bg-[#ff0050] text-white font-semibold rounded-md">
+        Contact Us
+      </button>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-toggle" class="lg:hidden text-white text-2xl focus:outline-none">
+      <!-- Hamburger -->
+      <span id="hamburger">☰</span>
+      <!-- Close Icon -->
+      <span id="close" class="hidden">✖</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden bg-black text-white px-6 py-4 space-y-3 hidden">
+    <a href="https://app.catcrm.com/v2/preview/Xm7bVKNVTI6WAcR4N98I?notrack=true" class="block hover:text-[#ff0050]">Home</a>
+    <a href="https://app.catcrm.com/v2/preview/CxWGYysEZA8SI4bRqlai?notrack=true" class="block hover:text-[#ff0050]">Our Clients</a>
+
+    <!-- Mobile Dropdown -->
+    <details class="group">
+      <summary class="cursor-pointer hover:text-[#ff0050]">Our Services</summary>
+      <ul class="pl-4 mt-2 space-y-2">
+        <li><a href="https://app.catcrm.com/v2/preview/CrCLxG2RfkHUuLr9QNE9?notrack=true" class="block hover:text-[#ff0050]">TikTok Ads Services</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">TikTok Live Content Creators</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">Fulfillment by Boss Ads Agency</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">TikTok Ads Account</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">Buy TikTok Followers</a></li>
+      </ul>
+    </details>
+
+    <a href="#" class="block hover:text-[#ff0050]">About Us</a>
+
+    <div class="flex gap-3 text-lg mt-4">
+      <i class="fa-brands fa-facebook-f text-[#ff0050] hover:text-white cursor-pointer"></i>
+      <i class="fa-brands fa-instagram text-[#ff0050] hover:text-white cursor-pointer"></i>
+      <i class="fa-brands fa-tiktok text-[#ff0050] hover:text-white cursor-pointer"></i>
+    </div>
+    <button class="w-full py-[6px] mt-4 bg-[#ff0050] text-white font-semibold rounded-md">
+      Contact Us
+    </button>
+  </div>
+</header>
+
+<div class="cursor-circle"></div>
+  
+
+
+<!-- Contact hero section -->
+<section 
+  class="relative bg-black py-32 md:py-40 flex items-center justify-center overflow-hidden"
+  style="background-image: url('https://images.unsplash.com/photo-1549490349-8643362c394e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;"
+>
+  <div class="absolute inset-0 bg-black opacity-80"></div> 
+  <div class="relative z-10 text-center">
+    <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white ">
+      Apply<span class="text-[#ff0050] heading-animate "> Now</span>
+    </h2>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="absolute bottom-0  left-0 w-full overflow-hidden z-30">
+    <div class="carousel-container bg-[#ff0050]">
+      <div class="carousel-text">
+        <span>🚀 Fresh Ingredients</span>
+        <span>💖 Positive Vibes</span>
+        <span>🔥 Great Taste</span>
+        <span>⭐ Quality Service</span>
+        <span>😊 Happy Customers</span>
+        <span>🌿 Pure Flavors</span>
+        <span>🎉 Awesome Experience</span>
+        <span>👨‍🍳 Friendly Staff</span>
+        <!-- Duplicate -->
+        <span>🚀 Fresh Ingredients</span>
+        <span>💖 Positive Vibes</span>
+        <span>🔥 Great Taste</span>
+        <span>⭐ Quality Service</span>
+        <span>😊 Happy Customers</span>
+        <span>🌿 Pure Flavors</span>
+        <span>🎉 Awesome Experience</span>
+        <span>👨‍🍳 Friendly Staff</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Form Section -->
+
+<section class="bg-black text-white py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    
+    <div class="text-left">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">
+        Get in <span class="text-[#ff0050] heading-animate">touch</span> with us
+      </h2>
+      <p class="text-lg text-gray-300 mb-12">
+        We'd love to hear from you! Whether you have questions, need support, or want to discuss a project, feel free to reach out.
+      </p>
+
+      <div class="space-y-6">
+        <a href="https://wa.me/+971551745764" class="bg-[#111111] p-8 rounded-2xl flex flex-col items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors duration-300">
+          <i class="fa-brands fa-whatsapp text-4xl text-[#ff0050] mb-4"></i>
+          <h3 class="text-xl font-semibold text-white">WhatsApp Channel</h3>
+        </a>
+
+        <div class="bg-[#111111] p-8 rounded-2xl flex flex-col items-center justify-center">
+          <h3 class="text-xl font-semibold text-white mb-6">Stay Connected</h3>
+          <div class="flex items-center space-x-6">
+            <a href="#" class="text-gray-400 hover:text-[#ff0050] transition-colors duration-300"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-[#ff0050] transition-colors duration-300"><i class="fa-brands fa-facebook-f fa-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-[#ff0050] transition-colors duration-300"><i class="fa-brands fa-instagram fa-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-[#ff0050] transition-colors duration-300"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-[#ff0050] transition-colors duration-300"><i class="fa-brands fa-tiktok fa-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-[#ff0050] transition-colors duration-300"><i class="fa-brands fa-google fa-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-[#ff0050] transition-colors duration-300"><i class="fa-brands fa-pinterest-p fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+        <div style="height: 410px; width: 100%;">
+                  <h2 class="text-4xl md:text-3xl text-center font-bold mb-4">
+        Let's Grow Your<span class="text-[#ff0050] heading-animate">Business</span>
+      </h2>
+       
+            <iframe
+                src="https://link.catcrm.com/widget/form/pBnIYZW8TqJyWkHYKEBq"
+                style="width:100%;height:100%;border:none;border-radius:12px"
+                id="inline-pBnIYZW8TqJyWkHYKEBq" 
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="opal"
+                data-height="410"
+                data-layout-iframe-id="inline-pBnIYZW8TqJyWkHYKEBq"
+                data-form-id="pBnIYZW8TqJyWkHYKEBq"
+                title="opal"
+            >
+            </iframe>
+            <script src="https://link.catcrm.com/js/form_embed.js"></script> 
+        </div>
+    </div>
+
+  </div>
+</section>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- ✅ Slick JS -->
+ <script src="https://link.catcrm.com/js/form_embed.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/sejanmiah/js-for-opal-agency/custom-scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <style>
+    #animated-text {
+      display: inline-block;
+    }
+    #cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: black;
+      margin-left: 3px;
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+      .content_slick_slider {
+        margin: auto;
+        max-width: 1280px;
+      }
+
+      .slider_slick_custom {
+        margin: 30px auto;
+      }
+
+      .image_slider_slick {
+        padding: 10px;
+      }
+
+      .image_slider_slick img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      /* slick arrows */
+      .slick-prev,
+      .slick-next {
+        z-index: 10;
+      }
+
+  </style>
+        <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    /> -->
+
+    <!-- ✅ TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!-- ✅ FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- ✅ GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full z-50 bg-transparent">
+  <nav class="max-w-[1240px] mx-auto px-4 flex items-center justify-between py-4">
+    <!-- Logo -->
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-white">
+      Opal
+    </h1>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden lg:flex gap-6 text-white font-medium items-center">
+      <li><a href="https://app.catcrm.com/v2/preview/Xm7bVKNVTI6WAcR4N98I?notrack=true" class="hover:text-[#ff0050]">Home</a></li>
+      <li><a href="https://app.catcrm.com/v2/preview/CxWGYysEZA8SI4bRqlai?notrack=true" class="hover:text-[#ff0050]">Our Clients</a></li>
+
+      <!-- Submenu -->
+      <li class="relative group">
+        <button class="hover:text-[#ff0050] flex items-center gap-1">
+          Our Services
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
+        </button>
+        <ul
+          class="absolute left-0 mt-2 w-56 bg-black text-white p-2 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300">
+          <li><a href="https://app.catcrm.com/v2/preview/CrCLxG2RfkHUuLr9QNE9?notrack=true" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Ads Services</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Live Content Creators</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">Fulfillment by Boss Ads Agency</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Ads Account</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">Buy TikTok Followers</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#" class="hover:text-[#ff0050]">About Us</a></li>
+    </ul>
+
+    <!-- Right Section -->
+    <div class="hidden lg:flex items-center gap-4">
+      <div class="flex gap-3 text-lg">
+        <i class="fa-brands fa-facebook-f text-[#ff0050] hover:text-white cursor-pointer"></i>
+        <i class="fa-brands fa-instagram text-[#ff0050] hover:text-white cursor-pointer"></i>
+        <i class="fa-brands fa-tiktok text-[#ff0050] hover:text-white cursor-pointer"></i>
+      </div>
+      <button class="py-[6px] px-6 bg-[#ff0050] text-white font-semibold rounded-md">
+        Contact Us
+      </button>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-toggle" class="lg:hidden text-white text-2xl focus:outline-none">
+      <!-- Hamburger -->
+      <span id="hamburger">☰</span>
+      <!-- Close Icon -->
+      <span id="close" class="hidden">✖</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden bg-black text-white px-6 py-4 space-y-3 hidden">
+    <a href="https://app.catcrm.com/v2/preview/Xm7bVKNVTI6WAcR4N98I?notrack=true" class="block hover:text-[#ff0050]">Home</a>
+    <a href="https://app.catcrm.com/v2/preview/CxWGYysEZA8SI4bRqlai?notrack=true" class="block hover:text-[#ff0050]">Our Clients</a>
+
+    <!-- Mobile Dropdown -->
+    <details class="group">
+      <summary class="cursor-pointer hover:text-[#ff0050]">Our Services</summary>
+      <ul class="pl-4 mt-2 space-y-2">
+        <li><a href="https://app.catcrm.com/v2/preview/CrCLxG2RfkHUuLr9QNE9?notrack=true" class="block hover:text-[#ff0050]">TikTok Ads Services</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">TikTok Live Content Creators</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">Fulfillment by Boss Ads Agency</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">TikTok Ads Account</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">Buy TikTok Followers</a></li>
+      </ul>
+    </details>
+
+    <a href="#" class="block hover:text-[#ff0050]">About Us</a>
+
+    <div class="flex gap-3 text-lg mt-4">
+      <i class="fa-brands fa-facebook-f text-[#ff0050] hover:text-white cursor-pointer"></i>
+      <i class="fa-brands fa-instagram text-[#ff0050] hover:text-white cursor-pointer"></i>
+      <i class="fa-brands fa-tiktok text-[#ff0050] hover:text-white cursor-pointer"></i>
+    </div>
+    <button class="w-full py-[6px] mt-4 bg-[#ff0050] text-white font-semibold rounded-md">
+      Contact Us
+    </button>
+  </div>
+</header>
+
+<div class="cursor-circle"></div>
+
+<!-- Hero First Section -->
+<section class="main-video-section relative w-full h-[682px] overflow-hidden">
+  <!-- Background Video -->
+  <video autoplay muted loop class="absolute w-full h-full object-cover">
+    <source src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68beaec88c60737599f9d419.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Black Overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <!-- Gradient Shadow Top -->
+  <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-10"></div>
+
+  <!-- Content -->
+  <div class="relative text-box z-20 flex flex-col items-center justify-center text-left h-full px-4">
+    <h1 class="text-white font-bold text-5xl md:text-6xl lg:text-[50px] leading-tight">
+      Live Streaming Isn’t Just a Trend,  
+      <br>
+      <span id="animated-text" class="text-[#ff0050]">It’s the Future</span>
+    </h1>
+
+    <div class="mt-8 flex gap-5 mx-auto items-center flex-wrap justify-start">
+      <p class="text-base sm:text-lg md:text-xl text-white max-w-2xl text-left">
+        Join the movement—where creators go live, grow faster, and build stronger communities.  
+      </p>
+      <button class="py-[6px] px-6 bg-[#ff0050] text-white font-semibold rounded-md">
+        Get Started
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Counter Section -->
+<section id="stats-section" class="bg-black py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <div class="relative p-10 bg-white/5 rounded-2xl overflow-hidden bg-[radial-gradient(ellipse_at_center,_rgba(163,230,53,0.15)_0%,_rgba(0,0,0,0)_70%)]">
+        <i class="fa-solid fa-user-plus absolute top-8 right-8 text-2xl text-gray-400"></i>
+        <div class="text-5xl mt-10 font-bold text-[#ff0050] mb-2">
+          <span id="stat-1">0</span> +
+        </div>
+        <p class="text-sm text-gray-300">TikTok Live Managed Creators</p>
+      </div>
+
+      <div class="relative  p-10 bg-white/5 rounded-2xl overflow-hidden bg-[radial-gradient(ellipse_at_center,_rgba(163,230,53,0.15)_0%,_rgba(0,0,0,0)_70%)]">
+        <i class="fa-solid fa-user-plus absolute top-8 right-8 text-2xl text-gray-400"></i>
+        <div class="text-5xl mt-10 font-bold text-[#ff0050] mb-2">
+          <span id="stat-2">0</span> +
+        </div>
+        <p class="text-sm text-gray-300">Live Hours Streamed</p>
+      </div>
+
+      <div class="relative  p-10 bg-white/5 rounded-2xl overflow-hidden bg-[radial-gradient(ellipse_at_center,_rgba(163,230,53,0.15)_0%,_rgba(0,0,0,0)_70%)]">
+        <i class="fa-solid fa-user-plus absolute top-8 right-8 text-2xl text-gray-400"></i>
+        <div class="text-5xl mt-10 font-bold text-[#ff0050] mb-2">
+          <span id="stat-3">0</span> K+
+        </div>
+        <p class="text-sm text-gray-300">Viewers</p>
+      </div>
+
+      <div class="relative p-10 bg-white/5 rounded-2xl overflow-hidden bg-[radial-gradient(ellipse_at_center,_rgba(163,230,53,0.15)_0%,_rgba(0,0,0,0)_70%)]">
+        <i class="fa-solid fa-user-plus absolute top-8 right-8 text-2xl text-gray-400"></i>
+        <div class="text-5xl mt-10 font-bold text-[#ff0050] mb-2">
+          <span id="stat-4">0</span> +
+        </div>
+        <p class="text-sm text-gray-300">Regions</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Slider Section -->
+
+    <section
+      class="bg-[#000000]  w-full"
+    >
+      <div class="max-w-[1240px] flex justify-center flex-col  mx-auto">
+        <h1
+          class="text-[22px] border-heading translate-y-12 animate-slideUp text-center border border-1 border-[#FFFFFF1A] bg-[#0b0b0b] p-2 lg:p-5 mx-5 lg:mx-0 rounded-full font-semibold text-white leading-snug"
+        >
+          <span class="heading-animate">The Leading</span>
+          <span class="text-[#ff0050] heading-animate"
+            >TikTok Creators on Our List</span
+          >
+        </h1>
+        <div class="mt-8">
+          <div class="content_slick_slider">
+            <div class="slider_slick_custom">
+              <div class="image_slider_slick">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68be99fc81ee1812763dffb1.webp"
+                  alt="img1"
+                />
+              </div>
+              <div class="image_slider_slick">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68be99fc2d529f37983d7474.webp"
+                  alt="img2"
+                />
+              </div>
+              <div class="image_slider_slick">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68be99fccf439662c096b824.webp"
+                  alt="img3"
+                />
+              </div>
+              <div class="image_slider_slick">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68be99fc6c5648232e285476.webp"
+                  alt="img4"
+                />
+              </div>
+              <div class="image_slider_slick">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68be99fc2d529f65733d7470.webp"
+                  alt="img5"
+                />
+              </div>
+              <div class="image_slider_slick">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68be99fcdb3e0065a8dbea26.webp"
+                  alt="img6"
+                />
+              </div>
+              <div class="image_slider_slick">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68be99fc966de8c4220fa466.webp"
+                  alt="img7"
+                />
+              </div>
+              <div class="image_slider_slick">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68be99fc647fb2426a1109f1.webp"
+                  alt="img8"
+                />
+              </div>
+              <div class="image_slider_slick">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68be99fccf4396c5cf96b822.webp"
+                  alt="img8"
+                />
+              </div>
+              <div class="image_slider_slick">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68be99fc6c5648196f285477.webp"
+                  alt="img8"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h1
+            class="text-[24px] subheading-animate text-center font-semibold text-white leading-snug"
+          >
+            <span class="">Featuring</span>
+            <span class="text-[#ff0050]"
+              >Our Best TikTok Creators</span
+               
+            >
+          </h1>
+        </div>
+      </div>
+    </section>
+
+<!-- Why Choose Opal Live Agency -->
+<section class="bg-black text-white py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+    <div class="space-y-12">
+      <div>
+        <p class="text-[#ff0050] font-semibold text-sm mb-2">* WHY CHOOSE</p>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Why Partner <br> with Opal Live Agency?</h2>
+        <p class="mt-6 text-gray-300 max-w-xl">
+          At Opal, we don’t believe in cookie-cutter plans. Every creator and brand gets a custom strategy designed to unlock growth through live streaming. From expert guidance to hands-on support, we give you the tools, coaching, and confidence to go live—and thrive.
+        </p>
+      </div>
+
+      <div id="feature-cards" class="space-y-6">
+        <div class="bg-[#111111] feature-card border border-gray-800 rounded-2xl p-6">
+          <h3 class="font-bold text-lg mb-2 text-white">Personalized Coaching</h3>
+          <p class="text-gray-400 text-sm">
+            Work 1-on-1 with mentors who know how to captivate audiences. We’ll guide you with proven tactics to boost engagement and consistency.
+          </p>
+        </div>
+
+        <div class="bg-[#111111] feature-card border border-gray-800 rounded-2xl p-6">
+          <h3 class="font-bold text-lg mb-2 text-white">Monetize Your Live</h3>
+          <p class="text-gray-400 text-sm">
+            Turn your passion into income. We help you access real earning opportunities so every live session builds both community and revenue.
+          </p>
+        </div>
+
+        <div class="bg-[#111111] feature-card border border-gray-800 rounded-2xl p-6">
+          <h3 class="font-bold text-lg mb-2 text-white">Quick Onboarding</h3>
+          <p class="text-gray-400 text-sm">
+            No waiting games. Get your account verified and set up quickly so you can start streaming and growing without unnecessary delays.
+          </p>
+        </div>
+
+        <div class="bg-[#111111] feature-card border border-gray-800 rounded-2xl p-6">
+          <h3 class="font-bold text-lg mb-2 text-white">Proven Growth</h3>
+          <p class="text-gray-400 text-sm">
+            Our strategies are tested and results-driven. With Opal, you’ll see measurable progress that takes you from just going live to standing out.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden lg:mt-40 lg:block">
+      <img 
+        src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68c84d101708d06d6ebbfa04.jpeg" 
+        alt="Content creator working with laptop and streaming setup" 
+        class="rounded-2xl object-cover w-full h-full"
+      >
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Bottom Top Section -->
+<section class="main-video-section relative w-full h-[682px] overflow-hidden">
+  <!-- Background Video -->
+  <video autoplay muted loop class="absolute w-full h-full object-cover">
+    <source src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68beaec88c60737599f9d419.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Black Overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <!-- Gradient Shadow Top -->
+  <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-10"></div>
+
+  <!-- Content -->
+  <div class="relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
+    <h1 class="text-white font-bold text-5xl md:text-6xl lg:text-[180px] leading-tight">
+      LET'S WORK <br> TOGETHER
+    </h1>
+
+    <!-- Contact Button -->
+    <div class="hover-icon-div absolute group flex flex-col mt-8 rounded-full bg-[#ff0050] hover:bg-black cursor-pointer text-white font-bold px-[10px] py-[35px] text-lg md:text-xl transition-all duration-300">
+      <i class="fa-solid fa-arrow-right text-white -rotate-45 group-hover:rotate-0 transition-transform duration-500"></i>
+      <a href="#" class="">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+ <footer class="bg-black text-white">
+  <!-- Top Section -->
+  <div class="flex flex-col items-center text-center py-8 px-4">
+    
+    <!-- WhatsApp CTA -->
+    <div class="flex items-center gap-2 mb-4">
+      <a href="https://wa.me/971551745764" target="_blank" class="flex items-center gap-2 mb-4">
+  <i class="fa-brands fa-whatsapp text-[#ff0050] text-2xl"></i>
+  <span class="font-semibold text-lg">Join WhatsApp Channel for Support</span>
+</a>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="flex gap-6 text-[#ff0050] text-xl mb-6">
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-google"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-pinterest-p"></i></a>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="flex flex-wrap justify-center gap-6 text-sm mb-6">
+      <a href="#" class="hover:text-[#ff0050] transition">FAQs</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Privacy Policy</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Our Regions</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Join Our Team</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Terms & Conditions</a>
+    </div>
+
+    <!-- Copyright -->
+    <p class="text-xs text-gray-400">
+      Copyright © 2025 All Rights Reserved by Opal Sky Media | Design & Develop by <a class="text-[#ff0050] font-semibold" href="https://netxsites.com/">Netxsites</a>
+    </p>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- ✅ Slick JS -->
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/sejanmiah/js-for-opal-agency/custom-scripts.js"></script>
+
+
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const text = "It’s Crucial"; // যেই টেক্সট টাইপ হবে
+      const el = document.getElementById("animated-text");
+      let i = 0;
+      let forward = true;
+
+      function typeEffect() {
+        if (forward) {
+          // ফরওয়ার্ড টাইপিং
+          el.textContent = text.slice(0, i++);
+          if (i > text.length) {
+            forward = false;
+            setTimeout(typeEffect, 1000); // একটু বিরতি দিয়ে রিভার্স শুরু
+            return;
+          }
+        } else {
+          // রিভার্স টাইপিং
+          el.textContent = text.slice(0, i--);
+          if (i < 0) {
+            forward = true;
+            setTimeout(typeEffect, 500); // একটু বিরতি দিয়ে আবার ফরওয়ার্ড শুরু
+            return;
+          }
+        }
+        setTimeout(typeEffect, 150); // স্পিড কন্ট্রোল
+      }
+
+      typeEffect(); // শুরু করো
+
+
+
+
+    //   Counter
+
+
+        gsap.registerPlugin(ScrollTrigger);
+
+    // একটি ফাংশন যা নম্বর অ্যানিমেট করে
+    function animateStat(elementId, endValue, isK = false) {
+        const element = document.getElementById(elementId);
+        let counter = { value: 0 };
+
+        gsap.to(counter, {
+            duration: 2,
+            value: endValue,
+            ease: "power2.out",
+            onUpdate: () => {
+                element.textContent = Math.round(counter.value).toLocaleString();
+            }
+        });
+    }
+
+    // ScrollTrigger দিয়ে অ্যানিমেশন শুরু করুন
+    ScrollTrigger.create({
+        trigger: "#stats-section",
+        start: "top 80%", // ভিউপোর্টের ৮০% নিচে এলে অ্যানিমেশন শুরু হবে
+        once: true, // অ্যানিমেশনটি শুধু একবার চলবে
+        onEnter: () => {
+            animateStat("stat-1", 998);
+            animateStat("stat-2", 4994);
+            animateStat("stat-3", 99); // শুধু 99 পর্যন্ত কাউন্ট হবে, K+ HTML এ আছে
+            animateStat("stat-4", 99);
+        }
+    });
+
+        gsap.set(".feature-card", { opacity: 0, y: 50 });
+
+    // ScrollTrigger দিয়ে অ্যানিমেশন তৈরি করুন
+    gsap.to(".feature-card", {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        stagger: 0.3, // একটির পর একটি কার্ড আসার মধ্যে ০.৩ সেকেন্ডের বিলম্ব
+        scrollTrigger: {
+            trigger: "#feature-cards", // এই এলিমেন্টটি স্ক্রিনে এলে অ্যানিমেশন শুরু হবে
+            start: "top 85%", // যখন #feature-cards এর উপরের অংশ ভিউপোর্টের ৮৫% নিচে থাকবে
+            once: true, // অ্যানিমেশনটি শুধু একবার চলবে
+        }
+    });
+    
+});
+
+    
+  </script>
+</body>
+</html>

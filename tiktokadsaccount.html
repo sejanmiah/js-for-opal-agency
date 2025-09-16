@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+                <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    /> -->
+
+    <!-- ✅ TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!-- ✅ FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- ✅ GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+<header class="fixed top-0 left-0 w-full z-50 bg-transparent">
+  <nav class="max-w-[1240px] mx-auto px-4 flex items-center justify-between py-4">
+    <!-- Logo -->
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-white">
+      Opal
+    </h1>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden lg:flex gap-6 text-white font-medium items-center">
+      <li><a href="https://app.catcrm.com/v2/preview/Xm7bVKNVTI6WAcR4N98I?notrack=true" class="hover:text-[#ff0050]">Home</a></li>
+      <li><a href="https://app.catcrm.com/v2/preview/CxWGYysEZA8SI4bRqlai?notrack=true" class="hover:text-[#ff0050]">Our Clients</a></li>
+
+      <!-- Submenu -->
+      <li class="relative group">
+        <button class="hover:text-[#ff0050] flex items-center gap-1">
+          Our Services
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
+          </svg>
+        </button>
+        <ul
+          class="absolute left-0 mt-2 w-56 bg-black text-white p-2 rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300">
+          <li><a href="https://app.catcrm.com/v2/preview/CrCLxG2RfkHUuLr9QNE9?notrack=true" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Ads Services</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Live Content Creators</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">Fulfillment by Boss Ads Agency</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">TikTok Ads Account</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:bg-[#ff0050]">Buy TikTok Followers</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#" class="hover:text-[#ff0050]">About Us</a></li>
+    </ul>
+
+    <!-- Right Section -->
+    <div class="hidden lg:flex items-center gap-4">
+      <div class="flex gap-3 text-lg">
+        <i class="fa-brands fa-facebook-f text-[#ff0050] hover:text-white cursor-pointer"></i>
+        <i class="fa-brands fa-instagram text-[#ff0050] hover:text-white cursor-pointer"></i>
+        <i class="fa-brands fa-tiktok text-[#ff0050] hover:text-white cursor-pointer"></i>
+      </div>
+      <button class="py-[6px] px-6 bg-[#ff0050] text-white font-semibold rounded-md">
+        Contact Us
+      </button>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-toggle" class="lg:hidden text-white text-2xl focus:outline-none">
+      <!-- Hamburger -->
+      <span id="hamburger">☰</span>
+      <!-- Close Icon -->
+      <span id="close" class="hidden">✖</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden bg-black text-white px-6 py-4 space-y-3 hidden">
+    <a href="https://app.catcrm.com/v2/preview/Xm7bVKNVTI6WAcR4N98I?notrack=true" class="block hover:text-[#ff0050]">Home</a>
+    <a href="https://app.catcrm.com/v2/preview/CxWGYysEZA8SI4bRqlai?notrack=true" class="block hover:text-[#ff0050]">Our Clients</a>
+
+    <!-- Mobile Dropdown -->
+    <details class="group">
+      <summary class="cursor-pointer hover:text-[#ff0050]">Our Services</summary>
+      <ul class="pl-4 mt-2 space-y-2">
+        <li><a href="https://app.catcrm.com/v2/preview/CrCLxG2RfkHUuLr9QNE9?notrack=true" class="block hover:text-[#ff0050]">TikTok Ads Services</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">TikTok Live Content Creators</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">Fulfillment by Boss Ads Agency</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">TikTok Ads Account</a></li>
+        <li><a href="#" class="block hover:text-[#ff0050]">Buy TikTok Followers</a></li>
+      </ul>
+    </details>
+
+    <a href="#" class="block hover:text-[#ff0050]">About Us</a>
+
+    <div class="flex gap-3 text-lg mt-4">
+      <i class="fa-brands fa-facebook-f text-[#ff0050] hover:text-white cursor-pointer"></i>
+      <i class="fa-brands fa-instagram text-[#ff0050] hover:text-white cursor-pointer"></i>
+      <i class="fa-brands fa-tiktok text-[#ff0050] hover:text-white cursor-pointer"></i>
+    </div>
+    <button class="w-full py-[6px] mt-4 bg-[#ff0050] text-white font-semibold rounded-md">
+      Contact Us
+    </button>
+  </div>
+</header>
+
+<div class="cursor-circle"></div>
+
+    <!-- Frist Hero section -->
+<section class="bg-black text-white py-32 relative overflow-hidden">
+  <div class="max-w-7xl  bg-gradient-to-b from-[#ff0050] to-[#000000] rounded-[30px] mx-auto p-4">
+    <div class="p-[2px]">
+      <div class="bg-black rounded-3xl flex flex-col md:flex-row items-center md:items-center justify-between p-10">
+        <!-- Left Content -->
+        <div class="md:w-1/2  mb-8 md:mb-0">
+        <h1 class="text-5xl sm:text-4xl lg:text-5xl  text-left text-white ">
+      <span class="heading-animate">TikTok Ads Account by</span>
+      </br>
+      <span class="text-[#ff0050] heading-animate font-bold">BOSS LIVE AGENCY</span>
+      <br class="hidden sm:block" />
+    </h1>
+    <p class="my-3">Get TikTok Ads accounts and expand your business like a pro.
+    </p>
+    <button class="px-[8px] py-[6px]  bg-[#ff0050] text-white font-semibold rounded-md">
+      Contact Us
+    </button>
+        <p class="my-3">More than <span class="text-[#ff0050] font-bold"> 80+</span> Brands Trust us
+    </p>
+
+     
+        </div>
+
+        <!-- Right Content -->
+        <div class="md:w-1/2 text-gray-300 text-lg leading-relaxed">
+            <img src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68c86e264f724e43f74a0741.webp" alt="opal media agency">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- SLider Section -->
+<section class="bg-black py-10">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="logo-slider">
+      
+      <!-- Logo 1 -->
+      <div class="flex items-center justify-center">
+        <img src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68c8236857da560ecbf8a576.svg"
+             alt="Logo"
+             class="h-20 w-32 object-contain" />
+      </div>
+
+      <!-- Logo 2 -->
+      <div class="flex items-center justify-center">
+        <img src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68c823671708d03dacad159a.svg"
+             alt="Logo"
+             class="h-20 w-32 object-contain" />
+      </div>
+
+      <!-- Logo 3 -->
+      <div class="flex items-center justify-center">
+        <img src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68c823671708d03869ad1599.png"
+             alt="Logo"
+             class="h-20 w-32 object-contain" />
+      </div>
+
+      <!-- Logo 4 -->
+      <div class="flex items-center justify-center">
+        <img src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68c8236734fadbe2a2789a3d.svg"
+             alt="Logo"
+             class="h-20 w-32 object-contain" />
+      </div>
+
+      <!-- Logo 5 -->
+      <div class="flex items-center justify-center">
+        <img src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68c82368b376d98619e92a4d.svg"
+             alt="Logo"
+             class="h-20 w-32 object-contain" />
+      </div>
+
+      <!-- Logo 6 -->
+      <div class="flex items-center justify-center">
+        <img src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68c8236757da561ff0f8a557.svg"
+             alt="Logo"
+             class="h-20 w-32 object-contain" />
+      </div>
+
+      <!-- Logo 7 -->
+      <div class="flex items-center justify-center">
+        <img src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68c823674f724e7a8132b2ed.svg"
+             alt="Logo"
+             class="h-20 w-32 object-contain" />
+      </div>
+
+      <!-- Logo 8 -->
+      <div class="flex items-center justify-center">
+        <img src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68c8236717537c29a0545994.svg"
+             alt="Logo"
+             class="h-20 w-32 object-contain" />
+      </div>
+
+    </div>
+    <a href="">
+        <h1 class="mt-10 text-4xl text-center  text-white">Want your <span class="font-bold heading-animate subheading-animate text-[#ff0050]"> brand </span>  to be next? Let’s talk.</h1>
+    </a>
+  </div>
+</section>
+
+
+
+<!-- Opal Live Agency -->
+
+
+<section class="bg-black text-white py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto text-center">
+    
+    <div class="mb-16">
+      <p class="text-[#ff0050] font-semibold text-sm mb-2">* WHY US</p>
+      <h2 class="text-4xl md:text-5xl font-bold">
+        Why <span class="text-[#ff0050] heading-animate">BOSS LIVE AGENCY</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+
+      <div class="bg-[#111111] p-8 rounded-2xl flex flex-col items-start">
+        <div class="mb-6 ">
+          <i class="fa-solid fa-globe text-4xl text-white"></i>
+        </div>
+        <h3 class="text-xl text-left font-semibold mb-3 text-[#ff0050]">WorldWide Advertising</h3>
+        <p class="text-gray-400 text-left text-sm">
+          In other words picking, packing, and shipping orders to customers.
+        </p>
+      </div>
+
+      <div class="bg-[#111111] p-8 rounded-2xl flex flex-col items-start">
+        <div class="mb-6">
+          <i class="fa-solid fa-mobile-screen-button text-4xl text-white"></i>
+        </div>
+        <h3 class="text-xl text-left font-semibold mb-3 text-[#ff0050]">Smarter Ad Campaigns</h3>
+        <p class="text-gray-400 text-left text-sm">
+          Leverage TikTok agency ad accounts to enhance your TikTok.
+        </p>
+      </div>
+
+      <div class="bg-[#111111] p-8 rounded-2xl flex flex-col items-start">
+        <div class="mb-6">
+          <i class="fa-solid fa-headset text-4xl text-white"></i>
+        </div>
+        <h3 class="text-xl text-left font-semibold mb-3 text-[#ff0050]">Priority Support</h3>
+        <p class="text-gray-400 text-left text-sm">
+          Priority support for our customers in case of any issues.
+        </p>
+      </div>
+
+      <div class="bg-[#111111] p-8 rounded-2xl flex flex-col items-start">
+        <div class="mb-6">
+          <i class="fa-regular fa-gem text-4xl text-white"></i>
+        </div>
+        <h3 class="text-xl text-left font-semibold mb-3 text-[#ff0050]">All Features Unlocked</h3>
+        <p class="text-gray-400 text-left text-sm">
+          All Advertising features unlocked for our Ads Account Users.
+        </p>
+      </div>
+
+    </div>
+
+    <div>
+      <button class="py-[6px] px-6 bg-[#ff0050] text-white font-semibold rounded-md">
+        Contact Us
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- Comparison between -->
+
+<section class="bg-black text-white py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="text-center mb-12">
+
+      <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+        Difference Between <span class="text-[#ff0050] heading-animate">Self-Managed Ads</span><br>and TikTok Agency Advertising Solutions
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+
+      <!-- Personal Account -->
+      <div class="bg-[#111111] border border-gray-800 rounded-2xl p-8">
+        <h3 class="text-2xl font-bold mb-6 text-center">Self-Managed TikTok Account</h3>
+        <ul class="space-y-4">
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-xmark text-gray-500 mt-1 mr-3"></i>
+            <span>Ad campaigns may be restricted in certain countries, like Pakistan.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-xmark text-gray-500 mt-1 mr-3"></i>
+            <span>Targeting options are limited to the account’s local audience.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-xmark text-gray-500 mt-1 mr-3"></i>
+            <span>Payment flexibility is limited due to unavailable credit line options.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-xmark text-gray-500 mt-1 mr-3"></i>
+            <span>Resolving account suspensions can take longer.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-xmark text-gray-500 mt-1 mr-3"></i>
+            <span>Withdrawing ad balance is not possible.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-xmark text-gray-500 mt-1 mr-3"></i>
+            <span>Only credit card payments are accepted.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-xmark text-gray-500 mt-1 mr-3"></i>
+            <span>Ad formats are restricted to in-feed ads.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Agency Account -->
+      <div class="bg-[#111111] border-2 border-[#ff0050] rounded-2xl p-8">
+        <h3 class="text-2xl font-bold mb-6 text-center">TikTok Agency Account</h3>
+        <ul class="space-y-4">
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-check text-[#ff0050] mt-1 mr-3"></i>
+            <span>Run ads globally without restrictions or hurdles.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-check text-[#ff0050] mt-1 mr-3"></i>
+            <span>Access audience targeting across 55+ countries, including major markets.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-check text-[#ff0050] mt-1 mr-3"></i>
+            <span>Unlimited ad spend potential for faster growth.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-check text-[#ff0050] mt-1 mr-3"></i>
+            <span>Receive priority support and official TikTok ad documentation.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-check text-[#ff0050] mt-1 mr-3"></i>
+            <span>Bonus access to exclusive ad training and marketing resources.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-check text-[#ff0050] mt-1 mr-3"></i>
+            <span>Multiple payment options: Top-up, Wise, Payoneer, and Bank Transfer.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fa-solid fa-circle-check text-[#ff0050] mt-1 mr-3"></i>
+            <span>Instant balance deposits available through agency guidance.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    
+    <div class="text-center mt-12">
+      <button class="py-[6px] px-6 bg-[#ff0050] text-white font-semibold rounded-md">
+        Get Add account
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Bottom Top Section -->
+<section class="main-video-section relative w-full h-[682px] overflow-hidden">
+  <!-- Background Video -->
+  <video autoplay muted loop class="absolute w-full h-full object-cover">
+    <source src="https://storage.googleapis.com/msgsndr/T73rxLwZ4VgfYPhSHe4N/media/68beaec88c60737599f9d419.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Black Overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <!-- Gradient Shadow Top -->
+  <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-10"></div>
+
+  <!-- Content -->
+  <div class="relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
+    <h1 class="text-white font-bold text-5xl md:text-6xl lg:text-[180px] leading-tight">
+      LET'S WORK <br> TOGETHER
+    </h1>
+
+    <!-- Contact Button -->
+    <div class="hover-icon-div absolute group flex flex-col mt-8 rounded-full bg-[#ff0050] hover:bg-black cursor-pointer text-white font-bold px-[10px] py-[35px] text-lg md:text-xl transition-all duration-300">
+      <i class="fa-solid fa-arrow-right text-white -rotate-45 group-hover:rotate-0 transition-transform duration-500"></i>
+      <a href="#" class="">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+ <footer class="bg-black text-white">
+  <!-- Top Section -->
+  <div class="flex flex-col items-center text-center py-8 px-4">
+    
+    <!-- WhatsApp CTA -->
+    <div class="flex items-center gap-2 mb-4">
+      <a href="https://wa.me/971551745764" target="_blank" class="flex items-center gap-2 mb-4">
+  <i class="fa-brands fa-whatsapp text-[#ff0050] text-2xl"></i>
+  <span class="font-semibold text-lg">Join WhatsApp Channel for Support</span>
+</a>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="flex gap-6 text-[#ff0050] text-xl mb-6">
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-google"></i></a>
+      <a href="#" class="hover:text-white transition"><i class="fa-brands fa-pinterest-p"></i></a>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="flex flex-wrap justify-center gap-6 text-sm mb-6">
+      <a href="#" class="hover:text-[#ff0050] transition">FAQs</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Privacy Policy</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Our Regions</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Join Our Team</a>
+      <a href="#" class="hover:text-[#ff0050] transition">Terms & Conditions</a>
+    </div>
+
+    <!-- Copyright -->
+    <p class="text-xs text-gray-400">
+      Copyright © 2025 All Rights Reserved by Opal Sky Media | Design & Develop by <a class="text-[#ff0050] font-semibold" href="https://netxsites.com/">Netxsites</a>
+    </p>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- ✅ Slick JS -->
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/sejanmiah/js-for-opal-agency/custom-scripts.js"></script>
+
+
+        <script>
+  $(document).ready(function () {
+    $('.logo-slider').slick({
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 0,
+      speed: 3000,
+      cssEase: 'linear',
+      arrows: false,
+      dots: false,
+      pauseOnHover: false,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: { slidesToShow: 3 }
+        },
+        {
+          breakpoint: 640,
+          settings: { slidesToShow: 2 }
+        }
+      ]
+    });
+  });
+</script>
+</body>
+</html>
